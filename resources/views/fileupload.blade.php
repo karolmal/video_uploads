@@ -23,6 +23,7 @@
  
 <div class="container">
         <h2>Upload Your Movie</h2>
+
             <form method="POST" action="{{ action('FileUploadController@fileStore') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
@@ -35,9 +36,11 @@
                     <br>
                     <input type="submit"  value="Submit" class="btn btn-primary">
                 </div>
+                
             </form>    
 
             <div class="container username">
+
                 @foreach($files as $file)
                <strong>File Username  : </strong>{{ $file->username }}
                <strong>File filename  : </strong>{{ $file->filename }}
@@ -61,7 +64,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
  
 <script type="text/javascript">
-    $(function() {
+        $(function() {
          $(document).ready(function()
          {
             var bar = $('.bar');
@@ -78,13 +81,19 @@
             bar.width(percentVal)
             percent.html(percentVal);
         },
-        complete: function(xhr) {
-            alert('File Uploaded Successfully');
+        complete: function (xhr) {
+            if(xhr.status !== 422){
+                alert('succes');
             window.location.href = "/fileupload";
-        }
+            } else {
+             window.location.href = "/fileupload";
+            }
+        
+        },
       });
    }); 
- });
+   });
+
 </script>
 </div>
 </body>
