@@ -7,6 +7,16 @@
         .progress { position:relative; width:100%; }
         .bar { background-color: #008000; width:0%; height:20px; }
          .percent { position:absolute; display:inline-block; left:50%; color: #7F98B2;}
+         video {
+            min-height: 100%; 
+            min-width: 100%; 
+            height: auto !important;
+            width: auto !important; 
+        }
+         .username {
+             text-align: center;
+         }
+
    </style>
 </head>
 <body>
@@ -27,29 +37,22 @@
                 </div>
             </form>    
 
-            <ul class="list-unstyled">
+            <div class="container username">
                 @foreach($files as $file)
-            <li>
-                 <strong>File Name  : </strong>{{ $file->filename }}
-                <br>
-                <strong>File Id  : </strong>{{ $file->id }}
-                <br>
-                <strong>File Username  : </strong>{{ $file->username }}
-            </li>
-                @endforeach
-            </ul>
-
-            <div class="container">
-            <video width="320" height="240" controls>
-            <source src="/movies/{{$file->filename}}" type="video/mp4"> 
-               </video>
-               <video width="320" height="240" controls>
-                <source src="{{asset('movies/1588172231.mp4')}}" type="video/mp4"> 
-               </video>
-               <video width="320" height="240" controls>
-                <source src="{{asset('movies/1588172231.mp4')}}" type="video/mp4"> 
-               </video>
+               <strong>File Username  : </strong>{{ $file->username }}
+               <strong>File filename  : </strong>{{ $file->filename }}
+            <div>
+               <video controls>
+                <source src="/movies/{{$file->filename}}" type="video/mp4"> 
+                    </video>
+                </div>
+               @endforeach
             </div>
+
+            
+
+
+           
 
 
 
