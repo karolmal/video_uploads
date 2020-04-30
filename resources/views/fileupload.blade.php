@@ -41,7 +41,7 @@
 
             <div class="container">
             <video width="320" height="240" controls>
-                <source src="{{asset('movies/1588172231.mp4')}}" type="video/mp4"> 
+            <source src="/movies/{{$file->filename}}" type="video/mp4"> 
                </video>
                <video width="320" height="240" controls>
                 <source src="{{asset('movies/1588172231.mp4')}}" type="video/mp4"> 
